@@ -32,7 +32,8 @@ $(document).ready(function () {
                 "CPF": $(this).find("#CPF").val()
             },
             error:
-            function (r) {
+                function (r) {
+                    status = "0";
                 if (r.status == 400)
                     ModalDialog("Ocorreu um erro", r.responseJSON);
                 else if (r.status == 500)
@@ -41,13 +42,19 @@ $(document).ready(function () {
             success:
             function (r) {
                 ModalDialog("Sucesso!", r)
-                $("#formCadastro")[0].reset();                                
-                window.location.href = urlRetorno;
+                status = "1";
             }
         });
     })
     
 })
+
+function RetornaHome() {
+    if (status === "1") {
+        window.location.href = urlRetorno;
+    }
+}
+
 
 function ModalDialog(titulo, texto) {
     var random = Math.random().toString().replace('.', '');
@@ -55,14 +62,14 @@ function ModalDialog(titulo, texto) {
         '        <div class="modal-dialog">                                                                                 ' +
         '            <div class="modal-content">                                                                            ' +
         '                <div class="modal-header">                                                                         ' +
-        '                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>         ' +
+        '                    <button type="button" class="close" onClick= RetornaHome() data-dismiss="modal" aria-hidden="true">×</button>         ' +
         '                    <h4 class="modal-title">' + titulo + '</h4>                                                    ' +
         '                </div>                                                                                             ' +
         '                <div class="modal-body">                                                                           ' +
         '                    <p>' + texto + '</p>                                                                           ' +
         '                </div>                                                                                             ' +
         '                <div class="modal-footer">                                                                         ' +
-        '                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>             ' +
+        '                    <button type="button" onClick= RetornaHome() class="btn btn-default" data-dismiss="modal">Fechar</button>             ' +
         '                                                                                                                   ' +
         '                </div>                                                                                             ' +
         '            </div><!-- /.modal-content -->                                                                         ' +
