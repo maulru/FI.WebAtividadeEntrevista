@@ -11,7 +11,7 @@ Incluir novo campo CPF na Inclusão e Alteração de cliente, bem como validaç�
 ## Implementações:
 
 #### - Novo campo CPF, seguindo o mesmo layout dos demais campos na tela
-#### - Obrigatoriadade do campo CPF
+#### - Obrigatoriedade do campo CPF
 #### - Formatação padrão CPF 111.111.111-11
 #### - Calculo padrão para verificar se o CPF é válido
 #### - Consistir que o CPF é único na base de dados.
